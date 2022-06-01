@@ -1,5 +1,6 @@
 require('dotenv').config();
 var express = require('express');
+var cors = require('cors')
 var bodyParser = require('body-parser')
 var mongoose = require('mongoose');
 var app = express();
@@ -9,6 +10,7 @@ var axios = require('axios');
 
 var Message = mongoose.model('Message', { name: String, message: String })
 
+app.use(cors())
 app.use(express.static(__dirname));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -26,11 +28,9 @@ app.post('/messages', async (req, res) => {
     message.save((err) => {
         if (err) sendStatus(500);
         io.emit('message', req.body);
-        // res.sendStatus(200);
     })
 
-    if (req.body.message === 'dolar' || 'dólar') {
-        console.log('CAIU AQUI')
+    if (req.body.message === 'dolar') {
         let response = await axios('http://economia.awesomeapi.com.br/json/last/USD-BRL');
         let dolarPrice = parseFloat(response.data.USDBRL.high).toFixed(2);
         const body = {
