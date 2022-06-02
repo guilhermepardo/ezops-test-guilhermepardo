@@ -5,7 +5,7 @@ files:
     destination: /home/ec2-user/ezops-test-guilhermepardo
 hooks:
   ApplicationStop:
-    - location: scripts/application_stop.sh
+    - location: scripts/aplication_stop.sh
       timeout: 300
       runas: root
       BeforeInstall:
