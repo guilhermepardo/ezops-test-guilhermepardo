@@ -2,7 +2,7 @@ version: 0.0
 os: linux
 files:
   - source: /
-    destination: /home/ec2-user/repos/ezops-test-guilhermepardo
+    destination: /home/ec2-user/ezops-test-guilhermepardo
 hooks:
   ApplicationStop:
     - location: scripts/aplication_stop.sh
