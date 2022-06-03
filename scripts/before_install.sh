@@ -8,6 +8,7 @@ nvm install node
 #create our working directory if it doesnt exist
 DIR="/home/ec2-user/ezops-test-guilhermepardo"
 if [ -d "$DIR" ]; then
+  rm -rf ${DIR}
   echo "${DIR} exists"
 else
   echo "Creating ${DIR} directory"
